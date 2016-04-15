@@ -8,8 +8,10 @@ TAG		:= $(VERSION)-$(shell git rev-parse --short --verify HEAD)
 
 all: build test release
 
+get-client:
+	wget -c https://github.com/BYU-OIT/docker-node-oracledb/blob/binaries/oracle-instantclient-12.1.tgz
 
-build:
+build: get-client
 	$(DOCKERCMD) build -t $(TAG) --force-rm .
 
 exec:
@@ -26,3 +28,6 @@ release:
 
 	$(DOCKERCMD) push $(DOCKER_REPO_URL):$(TAG)
 	$(DOCKERCMD) push $(DOCKER_REPO_URL):latest
+	
+clean:
+	-rm oracle-instantclient-*.tgz
