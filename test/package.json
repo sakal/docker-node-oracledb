@@ -1,0 +1,9 @@
+{
+  "private": true,
+  "scripts": {
+    "prestart": "/opt/oracle/config/sqlnet.ora.sh /opt/oracle/config/sqlnet.ora && cat /opt/oracle/config/sqlnet.ora"
+  },
+  "dependencies": {
+    "oracledb": "1.8"
+  }
+}
