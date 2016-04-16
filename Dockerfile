@@ -5,7 +5,7 @@ RUN apt-get update && apt-get upgrade -y && \
     apt-get install -y --no-install-recommends \
       libaio1 \
       python \
-      make && \
+      build-essential && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
@@ -15,7 +15,7 @@ ADD oracle-instantclient-12.1.tgz .
 COPY config ../config
 
 ENV PATH /opt/oracle/instantclient:$PATH
-ENV LD_LIBRARY_PATH  /opt/oracle/instantclient:$LD_LIBRARY_PATH
+ENV LD_LIBRARY_PATH  /opt/oracle/instantclient
 ENV TNS_ADMIN /opt/oracle/config/sqlnet.ora
 
 RUN ln -s libclntsh.so.12.1 libclntsh.so && \

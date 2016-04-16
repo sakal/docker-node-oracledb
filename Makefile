@@ -11,7 +11,7 @@ all: build test release
 get-client:
 	wget -c https://github.com/BYU-OIT/docker-node-oracledb/blob/binaries/oracle-instantclient-12.1.tgz
 
-build: get-client
+build:
 	$(DOCKERCMD) build -t $(TAG) --force-rm .
 
 exec:
