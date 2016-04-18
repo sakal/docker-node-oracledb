@@ -16,7 +16,8 @@ COPY config ../config
 
 ENV PATH /opt/oracle/instantclient:$PATH
 ENV LD_LIBRARY_PATH  /opt/oracle/instantclient
-ENV TNS_ADMIN /opt/oracle/config/sqlnet.ora
+#ENV TNS_ADMIN /opt/oracle/config/sqlnet.ora
+ENV TNS_ADMIN /opt/oracle/config/
 
 RUN ln -s libclntsh.so.12.1 libclntsh.so && \
     ln -s libocci.so.12.1 libocci.so && \
