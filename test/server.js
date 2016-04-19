@@ -6,6 +6,9 @@ oracledb.getConnection(
   user          : process.env.ORACLEDB_USER,
   password      : process.env.ORACLEDB_PASSWORD,
   connectString : process.env.ORACLEDB_CONNECTIONSTRING,
+  
+  //(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=<host name or ip>)(Port=31200)))(CONNECT_DATA=(SERVICE_NAME=<database name>.byu.edu))
+  
 },
 function(err, connection)
 {

@@ -6,25 +6,32 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      
     depends_on:
      - parent
-    links:
-     - db:database
+#     links:
+#      - db:database
     expose:
      - 80
+     
     environment:
-     - ORACLEDB_CONNECTIONSTRING='database:1521/xe'
+#     - ORACLEDB_CONNECTIONSTRING='database:1521/xe'
+     - ORACLEDB_CONNECTIONSTRING='10.211.0.76:31200/cescpy1'
      - ORACLEDB_USER='system'
      - ORACLEDB_PASSWORD='oracle'
-    command: npm start
+     
+    command: /bin/bash
+    
+    stdin_open: true
+    tty: true
     
 
 # https://hub.docker.com/r/wnameless/oracle-x-11g/
-  db:
-    image: wnameless/oracle-xe-11g
-    expose:
-      - "1521"
-
+#   db:
+#     image: wnameless/oracle-xe-11g
+#     expose:
+#       - "1521"
+# 
 
   parent:
     build:
