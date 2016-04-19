@@ -1,33 +1,31 @@
 
-.PHONY: update build test release
+.PHONY: build test release
 
-DOCKERCMD	:= docker
-DOCKER_REPO_URL	:= quay.io/byuoit/node-oracledb
+QUAY_URL	:= quay.io/byuoit/node-oracledb
 VERSION		:= 4.4-1.8
 TAG		:= $(VERSION)-$(shell git rev-parse --short --verify HEAD)
 
-all: build test release
+all: get-client build test release clean
 
 get-client:
-	wget -c https://github.com/BYU-OIT/docker-node-oracledb/blob/binaries/oracle-instantclient-12.1.tgz
+	wget -c https://github.com/byu-oit-appdev/docker-node-oracledb/blob/binaries/oracle-instantclient-12.1.tgz
 
 build:
-	$(DOCKERCMD) build -t $(TAG) --force-rm .
+	docker build -t $(TAG) --force-rm .
 
 exec:
-	$(DOCKERCMD) run --rm -it $(TAG) /bin/bash
+	docker run --rm -it $(TAG) /bin/bash
 	
 test:
-	$(DOCKERCMD) inspect $(TAG)
-	cd test && ./child-image.sh $(TAG); cd ..
-
+	docker inspect $(TAG)
+#  'invalid username/password logon denied' is ora-01017 is the desired error message, we should not be able to check the creds without TNS setup correctly.	
 
 release:
-	$(DOCKERCMD) tag  $(TAG) $(DOCKER_REPO_URL):$(TAG)
-	$(DOCKERCMD) tag  $(DOCKER_REPO_URL):$(TAG) $(DOCKER_REPO_URL):latest
+	docker tag  $(TAG) $(QUAY_URL):$(TAG)
+	docker tag  $(QUAY_URL):$(TAG) $(QUAY_URL):latest
 
-	$(DOCKERCMD) push $(DOCKER_REPO_URL):$(TAG)
-	$(DOCKERCMD) push $(DOCKER_REPO_URL):latest
+	docker push $(QUAY_URL):$(TAG)
+	docker push $(QUAY_URL):latest
 	
 clean:
 	-rm oracle-instantclient-*.tgz
