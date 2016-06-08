@@ -3,3 +3,4 @@
 .directory
 test/Dockerfile
 *node_modules
+*.log
