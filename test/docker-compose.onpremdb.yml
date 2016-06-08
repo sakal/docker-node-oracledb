@@ -1,0 +1,12 @@
+# Docker Compose override file to test against on-prem db
+
+version: "2"
+
+services:
+
+  child:
+    volumes:
+      - .:/usr/src/app
+
+    env_file:
+      - env/onpremdb.env

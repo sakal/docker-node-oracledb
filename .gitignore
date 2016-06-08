@@ -1,3 +1,5 @@
+*.env*
 *.tgz
 .directory
 test/Dockerfile
+*node_modules

@@ -1,3 +1,6 @@
 *
 !package.json
 !server.js
+!dbconfig.js
+!wait-for-db.sh
+

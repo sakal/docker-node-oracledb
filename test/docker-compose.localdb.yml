@@ -1,0 +1,26 @@
+# Docker Compose override file to provided disposable db for test
+
+version: "2"
+
+services:
+
+  child:
+
+    links:
+     - db:database
+
+    environment:
+     - ORACLEDB_HOST=database
+     - ORACLEDB_PORT=1521
+     - ORACLEDB_NAME=xe
+     
+
+  db:
+
+    image: wnameless/oracle-xe-11g
+
+    environment:
+     - ORACLE_ALLOW_REMOTE=true
+
+    expose:
+      - "1521"

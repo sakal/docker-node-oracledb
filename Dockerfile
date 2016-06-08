@@ -13,6 +13,7 @@ RUN mkdir -p /opt/oracle/instantclient
 WORKDIR /opt/oracle/instantclient
 ADD oracle-instantclient-12.1.tgz .
 COPY config ../config
+RUN chmod +x ../config/*.sh
 
 ENV PATH /opt/oracle/instantclient:$PATH
 ENV LD_LIBRARY_PATH  /opt/oracle/instantclient
@@ -27,5 +28,5 @@ RUN ln -s libclntsh.so.12.1 libclntsh.so && \
 
 RUN npm install -g oracledb
 
-#suggest adding this command to nmp prestart to gen a new seed 
-ONBUILD RUN ../config/sqlnet.ora.sh ../config/sqlnet.ora 
+#suggest adding this command to nmp prestart to gen a new seed
+ONBUILD RUN ../config/sqlnet.ora.sh ../config/sqlnet.ora
