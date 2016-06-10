@@ -45,4 +45,5 @@ pq:
 
 
 db_client:
-	wget -c https://github.com/byu-oit-appdev/docker-node-oracledb/blob/binaries/oracle-instantclient-12.1.tgz
+	git checkout binaries -- oracle-instantclient-12.1.tgz
+
