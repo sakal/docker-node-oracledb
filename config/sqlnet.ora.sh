@@ -16,3 +16,12 @@ SQLNET.ENCRYPTION_CLIENT = required
 SQLNET.CRYPTO_CHECKSUM_CLIENT = required
 
 EOF
+# 
+#
+#
+# RUN cat >> /etc/bash.bashrc << EOF
+# ORA_PATH=/opt/oracle/instantclient/config
+# if [ -f $ORA_PATH/sqlnet.ora.sh ]; then
+#   . $ORA_PATH/sqlnet.ora.sh $ORA_PATH/sqlnet.ora
+# fi
+# EOF

@@ -47,12 +47,6 @@ oracledb.getConnection({
                     console.log("Failed test. Connection is: " + result.rows);
                     process.exit(1);
                 }
-
-                // tail = new Tail("/tmp/sqlnet_encryption.trc");
-                // tail.on("line", function(data) {
-                //     console.log(data);
-                // });
-
             }
         );
     });
