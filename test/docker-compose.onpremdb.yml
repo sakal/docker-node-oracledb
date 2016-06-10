@@ -9,4 +9,4 @@ services:
       - .:/usr/src/app
 
     env_file:
-      - env/onpremdb.env
+      - .env/cescpy1.env
