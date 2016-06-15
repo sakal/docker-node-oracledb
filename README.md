@@ -58,9 +58,9 @@ image:
 - use npm link in the downstream docker image
 - use npm link in the downstream app's package.json
 
- The last option is recommend to ensure the link is established in the local
- directory relative to the app's own package.json. All that needs to be down is
- add the link command to the apps prestart script:
+The last option is recommend to ensure the link is established in the local
+directory relative to the app's own package.json. All that needs to be down is
+add the link command to the apps prestart script:
  ```
  "scripts": {
    "prestart" : "npm link oracledb"
