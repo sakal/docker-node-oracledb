@@ -2,7 +2,7 @@
 .PHONY: build test release
 
 QUAY_URL	:= quay.io/byuoit/node-oracledb
-VERSION		:= 4.4-1.8
+VERSION		:= 4.4-1.9
 TAG		:= $(VERSION)-$(shell git rev-parse --short --verify HEAD)
 
 all: db_client build test release clean
@@ -46,4 +46,3 @@ pq:
 
 db_client:
 	git checkout binaries -- oracle-instantclient-12.1.tgz
-
