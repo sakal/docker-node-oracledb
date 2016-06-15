@@ -1,9 +1,8 @@
 {
   "private": true,
   "dependencies": {
-    "wait-on": "^1.4"
   },
   "scripts": {
-    "prestart": "/opt/oracle/config/sqlnet.ora.sh /opt/oracle/config/sqlnet.ora && cat /opt/oracle/config/sqlnet.ora"
+    "prestart" : "npm link oracledb"
   }
 }
